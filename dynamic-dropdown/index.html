@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1>Dynamically set a datalist using vanilla JS.</h1>
+  <form>
+    <div>
+      <label for="ice-cream-choice">Choose a flavor:</label>
+      <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
+      <datalist id="ice-cream-flavors">
+          <option value="Chocolate">
+          <option value="Vanilla">
+      </datalist>
+    </div>
+    <div>
+      <label for="topping-choice">Topping:</label>
+      <input list="" id="topping-choice" name="topping-choice" placeholder="please select a flavor first"/>
+      <datalist id="topping-flavors-for-chocolate">
+        <option value="Crumbles">
+        <option value="Cookies">
+      </datalist>
+      <datalist id="topping-flavors-for-vanilla">
+          <option value="Strawberrys">
+          <option value="Blueberries">
+      </datalist>
+    </div>
+  </form>
+  <script>
+function setDatalist(value) {
+  console.log(value);
+  var el = document.getElementById("topping-choice");  
+  switch(value) {
+    case "Chocolate":
+    case "Vanilla":
+      el.setAttribute("list", "topping-flavors-for-"+value.toLowerCase());
+      el.removeAttribute("placeholder");
+      el.value = "";
+      break;
+    default:
+      el.setAttribute("list", "");
+      el.setAttribute("placeholder", "please select a flavor first");
+  }
+}
+
+var el = document.getElementById("ice-cream-choice");
+el.addEventListener("change", function(event) {
+  setDatalist(event.target.value);
+}, false);
+  </script>
+</body>
+</html>
