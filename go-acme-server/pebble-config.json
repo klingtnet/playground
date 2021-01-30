@@ -1,0 +1,10 @@
+{
+  "pebble": {
+    "listenAddress": "0.0.0.0:14000",
+    "certificate": "pebble-cert.pem",
+    "privateKey": "pebble-key.pem",
+    "httpPort": 5080,
+    "ocspResponderURL": "",
+    "externalAccountBindingRequired": false
+  }
+}
